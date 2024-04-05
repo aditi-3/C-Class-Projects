@@ -1,22 +1,21 @@
 /**
  * @name Aditi Verma
  *       ASSIGNMENT 3 - Chapter 13
- * @date 3/13/24
+ * @date 3/20/24
  */
 
 #include "inventory.h"
 #include <iostream>
-#include <cstdlib>
 using namespace std;
 
 //Default constructor
-// Inventory::Inventory(){}
+Inventory::Inventory(){}
 
 /**
  * Gets dogLicense value
  * @return {string}  
  */
-string Inventory::getDogLicense() const
+string Inventory::getDogLicense() 
 {
     return dogLicense;
 }
@@ -25,7 +24,7 @@ string Inventory::getDogLicense() const
  * Gets dogName value
  * @return {string}  
  */
-string Inventory::getDogName() const
+string Inventory::getDogName() 
 {
     return dogName;
 }
@@ -34,7 +33,7 @@ string Inventory::getDogName() const
  * Gets ownerPhone value
  * @return {string}  
  */
-string Inventory::getOwnerPhone() const
+string Inventory::getOwnerPhone() 
 {
     return ownerPhone;
 }
@@ -43,7 +42,7 @@ string Inventory::getOwnerPhone() const
  * Gets priceQuoted value
  * @return {float} 
  */
-float Inventory::getPriceQuoted() const
+float Inventory::getPriceQuoted() 
 {
     return priceQuoted;
 }

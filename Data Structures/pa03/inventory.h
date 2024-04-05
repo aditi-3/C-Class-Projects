@@ -1,12 +1,12 @@
 /**
  * @name Aditi Verma
  *       ASSIGNMENT 3 - Chapter 13
- * @date 3/13/24
+ * @date 3/20/24
  */
 
+#include <iostream>
 #ifndef INVENTORY_H
 #define INTENTORY_H
-#include <iostream>
 using namespace std;
 
 class Inventory 
@@ -19,15 +19,15 @@ class Inventory
 
     public:
         //getters
-        string getDogLicense() const;
-        string getDogName() const;
-        string getOwnerPhone() const;
-        float getPriceQuoted() const;
+        string getDogLicense();
+        string getDogName();
+        string getOwnerPhone();
+        float getPriceQuoted();
 
         //setters
-        void setDogLicense(string);
-        void setDogName(string);
-        void setOwnerPhone(string);
-        void setPriceQuoted(float);
+        void setDogLicense(string li);
+        void setDogName(string name);
+        void setOwnerPhone(string phone);
+        void setPriceQuoted(float price);
 }; 
 #endif
