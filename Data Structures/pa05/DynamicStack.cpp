@@ -30,6 +30,11 @@ DynamicStack::~DynamicStack()
  */
 void DynamicStack::push(string word)
 {
+    if(word.length() < 1 || word.length() > 10)
+    {
+        cout<<"The word must be at least one character and no longer than 10 letters."<<endl;
+        exit(EXIT_FAILURE);
+    }
     StackNode *newNode; //Point to a new node
 
     newNode = new StackNode;
@@ -112,7 +117,29 @@ void DynamicStack::displayStack()
 
 void DynamicStack::story()
 {
-
+    if(isEmpty()) //if list empty
+    {
+        cout<<"The stack is empty."<<endl;
+    }
+    else
+    {
+        StackNode *currentNode; //Move through list
+        currentNode = top;
+        int i = 0; //position
+        while(currentNode) //while node exists
+        {
+            currentNode = currentNode->next;
+            i++;
+        }
+        
+        StackNode *temp = top; //Temporaty pointer
+        string tempWord = "";
+        if(i == 5)
+        {
+            cout<<"I woke up from a ";
+            tempWord;
+        }
+    }
 }
 bool DynamicStack::isEmpty()
 {
