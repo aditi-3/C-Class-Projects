@@ -72,7 +72,6 @@ void DynamicStack::pop()
         delete top;
         top = temp; //Sets 2nd node to 1st
     }
-    cout<<"\n"<<word<< " was popped."<<endl;
 }
 
 /** Capitalize 
@@ -149,7 +148,7 @@ void DynamicStack::story()
                 i++;
             }
             //Print out story
-            cout<<"\nI woke up from a "<< words[0] << " to face one of the most heebie-jeebie inducing " <<words[1] << " to man.";
+            cout<<"\nI woke up from a "<< words[0] << " to face one of the most heebie jeebie inducing " <<words[1] << " to man.";
             cout<<"\nNot only did it have a huge "<< words[2] << " on its forehead but it also smelled like "<< words[3] <<".";
             cout<<"\nQuite frankly, it reminded me of a " << words[4] <<".";
         }
