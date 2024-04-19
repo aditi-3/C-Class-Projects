@@ -2,7 +2,8 @@
     "files.associations": {
         "iostream": "cpp",
         "typeinfo": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "new": "cpp"
     },
     "C_Cpp.default.compilerPath": "cl.exe"
 }

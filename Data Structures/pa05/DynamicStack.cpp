@@ -6,6 +6,7 @@
 
 #include "DynamicStack.h"
 #include <iostream>
+#include <vector>
 using namespace std;
 
 /** Destructor
@@ -50,16 +51,17 @@ void DynamicStack::push(string word)
         newNode->next = top;
         top = newNode;
     }
+    cout<<word<<" was added to the stack."<<endl;
 }
 
 /** Pop
  *  Pops the value at the top of the stack
  *  @param  {string} word : 
  */
-void DynamicStack::pop(string &word)
+void DynamicStack::pop()
 {
     StackNode *temp = nullptr; //Temporaty pointer
-    
+    string word;
     if(isEmpty()) //if list empty, nothing to pop
     {
         cout<<"The stack is empty."<<endl;
@@ -71,6 +73,7 @@ void DynamicStack::pop(string &word)
         delete top;
         top = temp; //Sets 2nd node to 1st
     }
+    cout<<word<< "was popped."<<endl;
 }
 
 /** Capitalize 
@@ -96,6 +99,7 @@ void DynamicStack::capitalize()
             temp = temp->next;
         }
     }
+    cout<<"The stack is capitalized."<<endl;
 }
 
 /** Display Stack 
@@ -115,33 +119,61 @@ void DynamicStack::displayStack()
     }
 }
 
+/** Make a Story
+ * Prints out a story using 5 words from the
+ */
 void DynamicStack::story()
 {
     if(isEmpty()) //if list empty
     {
         cout<<"The stack is empty."<<endl;
     }
-    else
+    else 
     {
         StackNode *currentNode; //Move through list
         currentNode = top;
-        int i = 0; //position
-        while(currentNode) //while node exists
+
+        vector<string> words; 
+        while(currentNode) //Store all stack values in a vector of strings
         {
-            currentNode = currentNode->next;
-            i++;
+            words.push_back(currentNode->value);
+            currentNode = currentNode -> next;
         }
-        
-        StackNode *temp = top; //Temporaty pointer
-        string tempWord = "";
-        if(i == 5)
+
+        if(words.size() > 5) //If there are enough words in stack
         {
-            cout<<"I woke up from a ";
-            tempWord;
+            int i = 0;
+            while(i < 5)
+            {
+                pop();
+                i++;
+            }
+            //Print out story
+            cout<<"I woke up from a "<< words[0] << " to face one of the most heebie-jeebie inducing " <<words[1] << " to man.";
+            cout<<"Not only did it have a huge "<< words[2] << " on its forehead but it also smelled like"<< words[3] <<".";
+            cout<<"Quite frankly, it reminded me of a " << words[4] <<".";
+        }
+        else
+        {
+            cout<<"Not enough words in stack."<<endl;
         }
     }
 }
+
+/** Is Empty 
+ * Returns true if the stack is empty and false otherwise
+ * @return {bool}  : 
+ */
 bool DynamicStack::isEmpty()
 {
-
+    bool empty;
+    if(!top)
+    {
+        empty = true;
+    }
+    else
+    {
+        empty = false;
+    }
+    return empty;
 } 

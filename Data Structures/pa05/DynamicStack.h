@@ -32,7 +32,7 @@ class DynamicStack
 
         //linked list operations
         void push(string);
-        void pop(string &);
+        void pop();
         void capitalize();
         void displayStack();
         void story();
