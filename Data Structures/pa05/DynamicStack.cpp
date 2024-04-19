@@ -33,15 +33,14 @@ void DynamicStack::push(string word)
 {
     if(word.length() < 1 || word.length() > 10)
     {
-        cout<<"The word must be at least one character and no longer than 10 letters."<<endl;
+        cout<<"\nERROR: The word must be at least one character and no longer than 10 letters."<<endl;
         exit(EXIT_FAILURE);
     }
-    StackNode *newNode; //Point to a new node
-
+    StackNode *newNode = nullptr; //Point to a new node
     newNode = new StackNode;
     newNode->value = word; //sets value of node to word
 
-    if(!isEmpty()) //If no node in list, add newNode the first node
+    if(isEmpty()) //If no node in list, add newNode the first node
     {
         top = newNode;
         newNode->next = nullptr;
@@ -64,7 +63,7 @@ void DynamicStack::pop()
     string word;
     if(isEmpty()) //if list empty, nothing to pop
     {
-        cout<<"The stack is empty."<<endl;
+        cout<<"\nThe stack is empty."<<endl;
     }
     else //If list is not empty, pop value off top of stack
     {
@@ -73,7 +72,7 @@ void DynamicStack::pop()
         delete top;
         top = temp; //Sets 2nd node to 1st
     }
-    cout<<word<< "was popped."<<endl;
+    cout<<"\n"<<word<< " was popped."<<endl;
 }
 
 /** Capitalize 
@@ -85,7 +84,7 @@ void DynamicStack::capitalize()
     string tempWord = "";
     if(isEmpty()) //if list empty, nothing to pop
     {
-        cout<<"The stack is empty."<<endl;
+        cout<<"\nThe stack is empty."<<endl;
     }
     else
     {
@@ -97,9 +96,10 @@ void DynamicStack::capitalize()
             }
             temp->value = tempWord; //Set current word to caputalized version
             temp = temp->next;
+            tempWord = "";
         }
     }
-    cout<<"The stack is capitalized."<<endl;
+    cout<<"\nThe stack is capitalized.";
 }
 
 /** Display Stack 
@@ -109,9 +109,9 @@ void DynamicStack::displayStack()
 {
     StackNode *currentNode; //Move through list
     currentNode = top;
-    int i = 0; //position
+    int i = 0; 
     cout<<endl;
-    while(currentNode) //while node exists
+    while(currentNode != nullptr) //while node exists
     {
         cout<<i<<". "<<currentNode->value<<endl; //print node value
         currentNode = currentNode->next;
@@ -120,13 +120,13 @@ void DynamicStack::displayStack()
 }
 
 /** Make a Story
- * Prints out a story using 5 words from the
+ * Prints out a story using 5 words from the stack
  */
 void DynamicStack::story()
 {
     if(isEmpty()) //if list empty
     {
-        cout<<"The stack is empty."<<endl;
+        cout<<"\nThe stack is empty."<<endl;
     }
     else 
     {
@@ -134,13 +134,13 @@ void DynamicStack::story()
         currentNode = top;
 
         vector<string> words; 
-        while(currentNode) //Store all stack values in a vector of strings
+        while(currentNode != nullptr) //Store all stack values in a vector of strings
         {
             words.push_back(currentNode->value);
             currentNode = currentNode -> next;
         }
 
-        if(words.size() > 5) //If there are enough words in stack
+        if(words.size() >= 5) //If there are enough words in stack
         {
             int i = 0;
             while(i < 5)
@@ -149,13 +149,13 @@ void DynamicStack::story()
                 i++;
             }
             //Print out story
-            cout<<"I woke up from a "<< words[0] << " to face one of the most heebie-jeebie inducing " <<words[1] << " to man.";
-            cout<<"Not only did it have a huge "<< words[2] << " on its forehead but it also smelled like"<< words[3] <<".";
-            cout<<"Quite frankly, it reminded me of a " << words[4] <<".";
+            cout<<"\nI woke up from a "<< words[0] << " to face one of the most heebie-jeebie inducing " <<words[1] << " to man.";
+            cout<<"\nNot only did it have a huge "<< words[2] << " on its forehead but it also smelled like "<< words[3] <<".";
+            cout<<"\nQuite frankly, it reminded me of a " << words[4] <<".";
         }
         else
         {
-            cout<<"Not enough words in stack."<<endl;
+            cout<<"\nNot enough words in stack."<<endl;
         }
     }
 }

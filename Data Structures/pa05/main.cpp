@@ -26,6 +26,7 @@ int main()
         cout<<"\n4). Display Stack";
         cout<<"\n5). Make a Story";
         cout<<"\n6). Exit";
+        cout<<"\n------------------------";
         cout<<"\nEnter menu choice: ";
         cin>>input;
         
@@ -43,11 +44,13 @@ int main()
                 cout<<"\nEnter a word: ";
                 cin>>wordIn;
                 //Validate user input
-                while(wordIn.length() > 10 || wordIn == "")
+                while(wordIn.length() > 10 || wordIn.length() < 1)
                 {
+                    cout<<"\nERROR: The word must be at least one character and no longer than 10 letters."<<endl;
                     cout<<"\nEnter a word: ";
                     cin>>wordIn;
                 }
+                stack.push(wordIn);
                 break;
             case 2: //Pop
                 stack.pop();
@@ -62,7 +65,7 @@ int main()
                 stack.story();
                 break;            
             case 6:
-                cout<<"Thank you!";
+                cout<<"\nThank you!";
                 break;
         }
     }
