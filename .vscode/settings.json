@@ -3,7 +3,10 @@
         "iostream": "cpp",
         "typeinfo": "cpp",
         "iomanip": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "vector": "cpp"
     },
     "C_Cpp.default.compilerPath": "cl.exe"
 }
