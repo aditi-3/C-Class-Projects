@@ -5,6 +5,7 @@
  */
 
 #include <iostream>
+#include <vector>
 #ifndef DYNAMICQUEUE_H
 #define DYNAMICQUEUE_H
 using namespace std;
@@ -15,13 +16,15 @@ class DynamicQueue
         //Structure for stack nodes
         struct QueueNode
         {
-            string value;
+            string name;
+            int ticket;
             struct QueueNode *next;
         };
 
         QueueNode *front;
         QueueNode *rear;
-        int numItems;
+        int ticketNum;
+        int numItems; //Used for isEmpty()
 
     public:
         //Constructor
@@ -32,10 +35,11 @@ class DynamicQueue
         //linked list operations
         void enqueue(string);
         void dequeue();
-        bool isEmpty();  
-        void numCount();
+        int numCount();
+        QueueNode* locate(QueueNode*, int);
         void raffle();
         void display();
         void clear();
+        bool isEmpty();  
 }; 
 #endif

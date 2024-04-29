@@ -17,7 +17,7 @@ int main()
     int input = 0;
 
     // Excecute menu until user exits
-    do{
+    do {
         // User input for menu
         cout<<"\n\n----------MENU----------";
         cout<<"\n1). Add name";
@@ -30,19 +30,19 @@ int main()
         cout<<"\nEnter menu choice: ";
         cin>>input;
         
-        //Catch input error
-        if (input < 1 || input > 6)
-        {
-            cout<<"\nWrong input, try again!";
-        }
-        
         // Switch statements for each menu selection
         string wordIn; //Stores string inputs
         switch(input)
         {
             case 1: //Add name
                 cout<<"\nEnter your name: ";
-                cin>>wordIn;                
+                cin>>wordIn;          
+                while(wordIn.length() > 20 || wordIn.length() < 1)
+                {
+                    cout<<"\nERROR: Name must be no longer than 20 letters."<<endl;
+                    cout<<"\nEnter your name: ";
+                    cin>>wordIn;
+                }
                 queue.enqueue(wordIn);
                 break;
             case 2: //Make an Order
@@ -59,6 +59,9 @@ int main()
                 break;            
             case 6:
                 cout<<"\nThank you!";
+                break;
+            default: 
+                cout<<"\nWrong input, try again!";
                 break;
         }
     }
