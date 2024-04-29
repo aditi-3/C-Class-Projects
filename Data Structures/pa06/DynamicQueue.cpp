@@ -103,10 +103,12 @@ DynamicQueue::QueueNode* DynamicQueue::locate(QueueNode* temp, int win)
 {
     if(temp->ticket == win)
     {
+        cout<<" found,";
         return temp;
     }
     if(temp == nullptr)
     {
+        cout<<"not found,";
         return nullptr;
     }
     locate(temp->next, win);
@@ -117,20 +119,22 @@ DynamicQueue::QueueNode* DynamicQueue::locate(QueueNode* temp, int win)
  */
 void DynamicQueue::raffle()
 {
-   int num = rand() % 500 + 1;
+   int num = (rand() % 500) + 1;
    QueueNode* winner = locate(front, num);
    if(winner == nullptr)
    {
         cout<<"Winner not found."<<endl;
+        return;
    }
    else
    {
-        int input;
+        int in;
         cout<<"The winner is "<<winner->name<<"with raffle number "<<num<<"."<<endl;
         cout<<"Do you want:"<<endl;
         cout<<"1. A free t-shirt"<<endl;    
-        cout<<"2. A free side dish"<<endl;   
-        switch(input) 
+        cout<<"2. A free side dish"<<endl;
+        cin>>in;
+        switch(in) 
         {
             case 1:
                 cout<<"Enjoy your t-shirt!"<<endl;
@@ -154,7 +158,7 @@ void DynamicQueue::display()
     else
     {
         QueueNode *temp = front;
-        cout<<"\n"<<"Name"<<"\t"<<"Ticket Number";
+        cout<<"\n"<<"Name"<<"\t\t"<<"Ticket Number";
         while(temp != nullptr) //while node exists
         {
             cout<<"\n"<<setw(6)<<temp->name<<"\t"<<setw(10)<<temp->ticket;
