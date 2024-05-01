@@ -24,7 +24,7 @@ class DynamicQueue
         QueueNode *front;
         QueueNode *rear;
         int ticketNum;
-        int numItems; //Used for isEmpty()
+        int countNodes(QueueNode*);
 
     public:
         //Constructor
@@ -35,7 +35,7 @@ class DynamicQueue
         //linked list operations
         void enqueue(string);
         void dequeue();
-        int numCount();
+        int numNodes();
         QueueNode* locate(QueueNode*, int);
         void raffle();
         void display();

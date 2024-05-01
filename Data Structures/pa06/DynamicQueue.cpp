@@ -14,7 +14,6 @@ DynamicQueue::DynamicQueue()
 {
     front = nullptr;
     rear = nullptr;
-    numItems = 0;
 }
 
 /** Destructor
@@ -53,8 +52,7 @@ void DynamicQueue::enqueue(string n)
         rear->next = newNode;
         rear = newNode;
     }
-    numItems++; //Update number of items
-    cout<<n<<" was added to the queue."<<endl; //*************
+    cout<<"Welcome "<<n<<"! Your raffle number is "<<ticketNum<<"."<<endl;
 }
 
 /** Dequeue
@@ -72,26 +70,32 @@ void DynamicQueue::dequeue()
         temp = front;
         front = front->next;
         delete temp;
-        numItems--;
     }
 }
 
-/** NumCount
- * Returns the current number of items in the queue
+/** countNodes [Private]
+ * Calculates the current number of items in the queue
  * @return {int}  : 
  */
-int DynamicQueue::numCount()
+int DynamicQueue::countNodes(QueueNode* q)
 {
-    QueueNode* temp =  front;
-    if(temp != nullptr)
+    if(q != nullptr)
     {
-        temp = temp->next;
-        return 1 + numCount();
+        return 1 + countNodes(q->next);
     }
     else
     {
         return 0;
     }
+}
+
+/** numNodes 
+ * Interface that calls countNodes() function
+ * @return {int}  : 
+ */
+int DynamicQueue::numNodes()
+{
+    return countNodes(front);
 }
 
 /** Locate
@@ -103,15 +107,13 @@ DynamicQueue::QueueNode* DynamicQueue::locate(QueueNode* temp, int win)
 {
     if(temp->ticket == win)
     {
-        cout<<" found,";
         return temp;
     }
     if(temp == nullptr)
     {
-        cout<<"not found,";
         return nullptr;
     }
-    locate(temp->next, win);
+    return locate(temp->next, win);
 }
 
 /** Raffle
@@ -119,31 +121,38 @@ DynamicQueue::QueueNode* DynamicQueue::locate(QueueNode* temp, int win)
  */
 void DynamicQueue::raffle()
 {
-   int num = (rand() % 500) + 1;
-   QueueNode* winner = locate(front, num);
-   if(winner == nullptr)
-   {
+    srand(time(0));
+    int num = (rand() % ticketNum/10) + 1;
+    QueueNode* winner = locate(front, num*10);
+
+    if(winner == nullptr)
+    {
         cout<<"Winner not found."<<endl;
         return;
-   }
-   else
-   {
+    }
+    else
+    {
         int in;
-        cout<<"The winner is "<<winner->name<<"with raffle number "<<num<<"."<<endl;
+        cout<<"The winner is "<<winner->name<<" with raffle number "<<winner->ticket<<"."<<endl;
         cout<<"Do you want:"<<endl;
         cout<<"1. A free t-shirt"<<endl;    
         cout<<"2. A free side dish"<<endl;
+        cout<<"Enter choice: ";
         cin>>in;
         switch(in) 
         {
             case 1:
-                cout<<"Enjoy your t-shirt!"<<endl;
+                cout<<"\nEnjoy your t-shirt!";
+                break;
             case 2:
-                cout<<"Enjoy your side dish!"<<endl;    
+                cout<<"\nEnjoy your side dish!";  
+                break;
             default:
-                cout<<"Invalid option, sorry."<<endl;
+                cout<<"\nInvalid option, sorry.";
+                break;
         }
-   }
+        return;
+    }
 }
 
 /** Display Queue
@@ -161,7 +170,7 @@ void DynamicQueue::display()
         cout<<"\n"<<"Name"<<"\t\t"<<"Ticket Number";
         while(temp != nullptr) //while node exists
         {
-            cout<<"\n"<<setw(6)<<temp->name<<"\t"<<setw(10)<<temp->ticket;
+            cout<<"\n"<<temp->name<<"\t"<<setw(10)<<temp->ticket;
             temp = temp->next;
         } 
     }
@@ -185,9 +194,9 @@ void DynamicQueue::clear()
  */
 bool DynamicQueue::isEmpty()
 {
-   if(numItems > 0)
-   {
-    return false;
-   }
-   return true;
+    if(front)
+    {
+        return false;
+    }
+    return true;
 } 

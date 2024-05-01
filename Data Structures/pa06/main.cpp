@@ -49,7 +49,7 @@ int main()
                 queue.dequeue();
                 break;
             case 3: //Count Names
-                queue.numCount();
+                cout<<"There are "<<queue.numNodes()<<" people in line."<<endl;
                 break;
             case 4: //Draw raffle winner
                 queue.raffle();
