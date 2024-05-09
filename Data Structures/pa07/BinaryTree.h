@@ -14,7 +14,7 @@ class BinaryTree
     private:
         struct TreeNode
         {
-            string value;
+            int value;
             TreeNode *left;
             TreeNode* right;
         };
@@ -22,20 +22,24 @@ class BinaryTree
         TreeNode* root;
 
         //Private member functions
-        void insert(TreeNode* &, TreeNode* &); //
-        void clearTree(TreeNode*); //
-        void display(TreeNode*); //
+        void clearTree(TreeNode*); 
+        void insert(TreeNode *&, TreeNode *&); 
+        void display(TreeNode* &); 
+        void leaf(TreeNode *&, int &); 
+        int height(TreeNode *); 
+        int width(TreeNode *, int);
 
     public:
         //Constructor
         BinaryTree();
         //Destructor
         ~BinaryTree();
-
-        void insertNode(int); //
-        void displayInOrder(); //
-        void leafCount();
-        void treeHeight();
-        void treeWidth();
+        
+        //Public member functions
+        void insertNode(int); 
+        void displayInOrder(); 
+        int leafCount(); 
+        int treeHeight(); 
+        int treeWidth();
 }; 
-#endif
+#endif;

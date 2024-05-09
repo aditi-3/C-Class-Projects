@@ -11,12 +11,12 @@ using namespace std;
 
 int main()
 {
-    //Create dynamic queue 
+    //Create binary tree
     BinaryTree tree;
     //Stores menu choice
     int input = 0;
 
-    // Excecute menu until user exits
+    //Excecute menu until user exits
     do {
         // User input for menu
         cout<<"\n\n----------MENU----------";
@@ -40,16 +40,18 @@ int main()
                 tree.insertNode(numIn);
                 break;
             case 2: //Display in order
+                cout<<"[";
                 tree.displayInOrder();
+                cout<<"]"<<endl;;
                 break;
             case 3: //Leaf Count
-                cout<<"There are "<<tree.leafCount()<<" leaves in the tree."<<endl;
+                cout<<"There is(are) "<<tree.leafCount()<<" leaves in the tree."<<endl;
                 break;
             case 4: //Tree height
-                tree.treeHeight();
+                cout<<"The height of the tree is "<<tree.treeHeight()<<"."<<endl;
                 break;
             case 5: //Tree width
-                tree.treeWidth();
+                cout<<"The width of the tree is "<<tree.treeWidth()<<"."<<endl;
                 break;            
             case 6:
                 cout<<"\nThank you!";
